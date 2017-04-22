@@ -11,6 +11,9 @@ import { PostPageComponent } from './component/post-page/post-page.component';
 import { UserPageComponent } from './component/user-page/user-page.component';
 import { ArticlePageComponent } from './component/article-page/article-page.component';
 
+import { ApiService } from './service/api.service';
+import { SessionService } from './service/session.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,10 @@ import { ArticlePageComponent } from './component/article-page/article-page.comp
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    SessionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
