@@ -20,7 +20,7 @@ export const appRoutes: Routes = [
     component: PostPageComponent,
   },
   {
-    path: 'user',
+    path: 'user/:id',
     component: UserPageComponent,
   },
   {
