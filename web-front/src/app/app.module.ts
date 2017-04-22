@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '@angular/material'
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
@@ -16,6 +17,7 @@ import { ApiService } from './service/api.service';
 import { SessionService } from './service/session.service';
 
 import { appRoutes } from './route';
+import { ArticleTileComponent } from './component/main-page/article-tile/article-tile.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +27,14 @@ import { appRoutes } from './route';
     NavigationBarComponent,
     PostPageComponent,
     UserPageComponent,
-    ArticlePageComponent
+    ArticlePageComponent,
+    ArticleTileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MaterialModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
