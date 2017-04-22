@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './component/main-page/main-page.component';
@@ -13,6 +14,8 @@ import { ArticlePageComponent } from './component/article-page/article-page.comp
 
 import { ApiService } from './service/api.service';
 import { SessionService } from './service/session.service';
+
+import { appRoutes } from './route';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { SessionService } from './service/session.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     ApiService,
