@@ -1,6 +1,10 @@
-hash: fc5db64ed5a502c7e0da20d96eb0297843f0cb9343f2554214eb464eb428a66f
-updated: 2017-04-23T15:02:05.296881386+09:00
+hash: f006643c335624754493b96492f62ed5a0e18536ddf89ec3693b7237a08553d2
+updated: 2017-04-23T22:42:17.32391765+09:00
 imports:
+- name: github.com/gorilla/context
+  version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
+- name: github.com/gorilla/mux
+  version: 392c28fe23e1c45ddba891b0320b3b5df220beea
 - name: github.com/revel/revel
   version: 75d66c3c990f01deb5ff2045c04da7eea5be39b2
 testImports: []
