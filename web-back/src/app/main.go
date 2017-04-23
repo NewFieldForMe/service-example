@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 type Page struct {
@@ -23,6 +25,9 @@ func viewHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	log.Printf("Start to serve")
-	http.HandleFunc("/", viewHandler)
-	http.ListenAndServe("localhost:8000", nil)
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", viewHandler)
+	log.Fatal(http.ListenAndServe(":8000", router))
+	// http.HandleFunc("/", viewHandler)
+	// http.ListenAndServe("localhost:8000", nil)
 }
