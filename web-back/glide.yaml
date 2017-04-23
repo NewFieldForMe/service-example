@@ -1,0 +1,4 @@
+package: .
+import:
+- package: github.com/revel/revel
+  version: ^0.14.0

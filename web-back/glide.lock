@@ -1,0 +1,6 @@
+hash: fc5db64ed5a502c7e0da20d96eb0297843f0cb9343f2554214eb464eb428a66f
+updated: 2017-04-23T15:02:05.296881386+09:00
+imports:
+- name: github.com/revel/revel
+  version: 75d66c3c990f01deb5ff2045c04da7eea5be39b2
+testImports: []
