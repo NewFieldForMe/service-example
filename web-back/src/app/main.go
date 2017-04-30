@@ -5,11 +5,6 @@ import (
 	"net/http"
 )
 
-type Page struct {
-	Title string
-	Count int
-}
-
 func main() {
 	log.Printf("Start to serve")
 	router := NewRouter()

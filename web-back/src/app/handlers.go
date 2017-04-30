@@ -12,30 +12,12 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
+// Index :GET
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Welcome!")
 }
 
-func TodoIndex(w http.ResponseWriter, r *http.Request) {
-	todos := Todos{
-		Todo{Name: "Write presentation"},
-		Todo{Name: "Host meetup"},
-	}
-
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
-	if err := json.NewEncoder(w).Encode(todos); err != nil {
-		panic(err)
-	}
-}
-
-func TodoShow(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	todoId := vars["todoId"]
-	fmt.Fprintln(w, "Todo show:", todoId)
-}
-
-// ArticleIndex GET /articles
+// ArticleIndex :GET /articles
 func ArticleIndex(w http.ResponseWriter, r *http.Request) {
 	db, err := gorm.Open("sqlite3", "./db/gorm.db")
 	if err != nil {
@@ -52,7 +34,7 @@ func ArticleIndex(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// ArticleShow GET /articles/{articleId}
+// ArticleShow :GET /articles/{articleId}
 func ArticleShow(w http.ResponseWriter, r *http.Request) {
 	db, err := gorm.Open("sqlite3", "./db/gorm.db")
 	if err != nil {
@@ -73,7 +55,7 @@ func ArticleShow(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// ArticleCreate POST /articles
+// ArticleCreate :POST /articles
 func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 	db, err := gorm.Open("sqlite3", "./db/gorm.db")
 	if err != nil {
