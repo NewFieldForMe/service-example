@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"app/controller"
+	"net/http"
+)
 
 // Route :route structure
 type Route struct {
@@ -13,29 +16,25 @@ type Route struct {
 // Routes :route infomation
 type Routes []Route
 
+const _apiPath = "/api/v1"
+
 var routes = Routes{
-	Route{
-		"Index",
-		"GET",
-		"/",
-		Index,
-	},
 	Route{
 		"ArticleIndex",
 		"GET",
-		"/articles",
-		ArticleIndex,
+		_apiPath + "/articles",
+		controller.ArticleIndex,
 	},
 	Route{
 		"ArticleShow",
 		"GET",
-		"/articles/{articleId}",
-		ArticleShow,
+		_apiPath + "/articles/{articleId}",
+		controller.ArticleShow,
 	},
 	Route{
 		"ArticleCreate",
 		"POST",
-		"/articles",
-		ArticleCreate,
+		_apiPath + "/articles",
+		controller.ArticleCreate,
 	},
 }
