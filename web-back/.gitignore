@@ -1,2 +1,6 @@
 vendor/
 debug
+bin/
+src/github.com
+.vscode
+src/app/db
