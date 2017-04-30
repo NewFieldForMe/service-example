@@ -2,5 +2,5 @@ vendor/
 debug
 bin/
 src/github.com
-src/app/db
+src/app/db/gorm.db
 pkg/
