@@ -3,4 +3,5 @@ debug
 bin/
 src/github.com
 src/app/db/gorm.db
+src/app/app
 pkg/
