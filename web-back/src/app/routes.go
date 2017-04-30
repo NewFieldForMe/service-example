@@ -31,9 +31,21 @@ var routes = Routes{
 		TodoShow,
 	},
 	Route{
-		"TodoCreate",
+		"ArticleIndex",
+		"GET",
+		"/articles",
+		ArticleIndex,
+	},
+	Route{
+		"ArticleShow",
+		"GET",
+		"/articles/{articleId}",
+		ArticleShow,
+	},
+	Route{
+		"ArticleCreate",
 		"POST",
-		"/todos",
-		TodoCreate,
+		"/articles",
+		ArticleCreate,
 	},
 }
