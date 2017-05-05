@@ -1,22 +1,26 @@
 <div class="container">
   <div class="bs-example">
-    <form>
+    <form [formGroup]="postForm" novalidate (ngSubmit)="onSubmit()">
+      <!--<p>Form value: {{ postForm.value | json }}</p>
+      <p>Form status: {{ postForm.status | json }}</p>-->
       <div class="form-group">
         <label for="inputTitle">Title</label>
-        <input type="email" class="form-control" id="inputTitle" placeholder="Title">
+        <input type="email" class="form-control" formControlName="title" id="inputTitle" placeholder="Title">
       </div>
       <div class="form-group">
         <label for="inputBody">Body</label>
-        <textarea class="form-control" id="inputBody" placeholder="Body"></textarea>
+        <textarea class="form-control" id="inputBody" formControlName="body" placeholder="Body"></textarea>
       </div>
+      <input class="btn btn-primary" type="button" value="ファイル選択" onClick="$('#image').click();">
       <div class="form-group">
-        <input type="file" class="form-control" accept="image/*"
-              name="image" (change)="changeListener($event)">
+        <input id="image" type="file" class="form-control" accept="image/*"
+              name="image" (change)="changeListener($event)" style="display:none;" >
       </div>
-      <div *ngIf="article.filedata" class="preview-image-div">
-        <img class="preview-image" src={{article.filedata}} />
+      <div *ngIf="postForm.get('filedata').value" class="preview-image-div">
+        <p>{{postForm.get('filename').value}}</p>
+        <img class="preview-image" src="{{postForm.get('filedata').value}}" />
       </div>
-      <button type="submit" class="btn btn-primary">Post</button>
+      <button type="submit" [disabled]="postForm.status != 'VALID'" class="btn btn-primary">Post</button>
     </form>
   </div>
 </div>
