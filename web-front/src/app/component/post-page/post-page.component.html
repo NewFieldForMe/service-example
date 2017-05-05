@@ -1,3 +1,22 @@
-<p>
-  post-page works!
-</p>
+<div class="container">
+  <div class="bs-example">
+    <form>
+      <div class="form-group">
+        <label for="inputTitle">Title</label>
+        <input type="email" class="form-control" id="inputTitle" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <label for="inputBody">Body</label>
+        <textarea class="form-control" id="inputBody" placeholder="Body"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="file" class="form-control" accept="image/*"
+              name="image" (change)="changeListener($event)">
+      </div>
+      <div *ngIf="article.filedata" class="preview-image-div">
+        <img class="preview-image" src={{article.filedata}} />
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
