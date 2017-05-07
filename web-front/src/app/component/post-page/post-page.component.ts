@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from '../../model/article';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-post-page',
@@ -11,7 +12,10 @@ export class PostPageComponent implements OnInit {
 
   postForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private api: ApiService,
+    private fb: FormBuilder,
+    ) {
     this.createForm();
   }
 
@@ -45,6 +49,13 @@ export class PostPageComponent implements OnInit {
 
   onSubmit() {
     let article = this.preparePost();
+    this.api.postArticle(JSON.stringify(article))
+      .then(value => {
+        console.log(value);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   preparePost(): Article {

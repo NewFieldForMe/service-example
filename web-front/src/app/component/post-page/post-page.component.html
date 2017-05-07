@@ -1,8 +1,8 @@
 <div class="container">
   <div class="bs-example">
     <form [formGroup]="postForm" novalidate (ngSubmit)="onSubmit()">
-      <!--<p>Form value: {{ postForm.value | json }}</p>
-      <p>Form status: {{ postForm.status | json }}</p>-->
+      <p>Form value: {{ postForm.value | json }}</p>
+      <p>Form status: {{ postForm.status | json }}</p>
       <div class="form-group">
         <label for="inputTitle">Title</label>
         <input type="email" class="form-control" formControlName="title" id="inputTitle" placeholder="Title">
