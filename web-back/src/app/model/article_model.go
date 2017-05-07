@@ -11,4 +11,9 @@ type Article struct {
 	Body  string `json:"body"`
 }
 
+type ArticlePostJSON struct {
+	Article
+	FileData string `json:"filedata";gorm:"-"`
+}
+
 type Articles []Article

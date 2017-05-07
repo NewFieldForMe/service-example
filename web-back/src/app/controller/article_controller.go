@@ -63,27 +63,18 @@ func ArticleCreate(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	// var _art_w = Article{Title: "test", Body: "hoge"}
-	// db.AutoMigrate(&Article{})
-	// db.Create(&_art_w)
-
-	// db.First(&_art, "Title = ?", "test")
-
-	var _article model.Article
 	// json
-	if err := json.Unmarshal(body, &_article); err != nil {
-		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(422) // unprocessable entity
-		if err := json.NewEncoder(w).Encode(err); err != nil {
-			panic(err)
-		}
-	}
+	var _buf model.ArticlePostJSON
+	json.Unmarshal(body, &_buf)
 
-	db.Create(&_article)
+	// TODO: AWS S3
 
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
-	if err := json.NewEncoder(w).Encode(_article); err != nil {
-		panic(err)
-	}
+	// var _article model.Article
+	// db.Create(&_article)
+
+	// w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	// w.WriteHeader(http.StatusOK)
+	// if err := json.NewEncoder(w).Encode(_article); err != nil {
+	// 	panic(err)
+	// }
 }
