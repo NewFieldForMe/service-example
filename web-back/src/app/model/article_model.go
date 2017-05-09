@@ -7,8 +7,9 @@ import (
 
 type Article struct {
 	gorm.Model
-	Title string `json:"title"`
-	Body  string `json:"body"`
+	Title    string `json:"title"`
+	Body     string `json:"body"`
+	ImageUrl string `json:"image_url`
 }
 
 type ArticlePostJSON struct {

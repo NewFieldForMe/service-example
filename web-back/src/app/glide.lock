@@ -1,6 +1,8 @@
-hash: 5f8f3bbadc96e1dae6344d9d3e1b52514377b1caeca4a44d8e4dd2eceb6b47e8
-updated: 2017-04-30T16:19:05.397934969+09:00
+hash: de0b38a71903322c8323aa5e46f8fe1f44f588feb4716821fcdd7db5dbd116b4
+updated: 2017-05-07T21:11:22.343347149+09:00
 imports:
+- name: github.com/aws/aws-sdk-go
+  version: fa7f88097f64d1a2bcc65f9b9b547f363082d496
 - name: github.com/gorilla/context
   version: 08b5f424b9271eedf6f9f0ce86cb9396ed337a42
 - name: github.com/gorilla/mux
