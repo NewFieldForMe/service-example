@@ -51,6 +51,14 @@ export class MainPageComponent implements OnInit {
         filename: '007.jpg'
       },
     ]
+
+    this.api.getArticles()
+      .then(value => {
+        this.articles = value.json();
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
 }
