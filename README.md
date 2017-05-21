@@ -1,0 +1,2 @@
+# service-example
+The reason for making this repository is to do training build a basic service by self. Sorry for that my English is a little strange. This basic service will have view articles, post article, user login, and small SNS. But, this codebase is progress working gradually. Golang is used to back-end. Angular is used to front-end.
