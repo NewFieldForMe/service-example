@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../../model/article';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Article } from '../../model/article';
 import { ApiService } from '../../service/api.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class PostPageComponent implements OnInit {
   constructor(
     private api: ApiService,
     private fb: FormBuilder,
+    private router: Router,
     ) {
     this.createForm();
   }
@@ -52,6 +54,7 @@ export class PostPageComponent implements OnInit {
     this.api.postArticle(JSON.stringify(article))
       .then(value => {
         console.log(value);
+        this.router.navigate(['mainpage']);
       })
       .catch(err => {
         console.log(err);
