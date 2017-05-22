@@ -20,7 +20,12 @@
         <p>{{postForm.get('filename').value}}</p>
         <img class="preview-image" src="{{postForm.get('filedata').value}}" />
       </div>
-      <button type="submit" [disabled]="postForm.status != 'VALID'" class="btn btn-primary">Post</button>
+      <div *ngIf="processing===false">
+        <button type="submit" [disabled]="postForm.status != 'VALID'" class="btn btn-primary">Post</button>
+      </div>
+      <div *ngIf="processing">
+        <div class="loader"></div>
+      </div>
     </form>
   </div>
 </div>

@@ -12,6 +12,7 @@ import { ApiService } from '../../service/api.service';
 export class PostPageComponent implements OnInit {
 
   postForm: FormGroup;
+  processing: Boolean;
 
   constructor(
     private api: ApiService,
@@ -19,6 +20,7 @@ export class PostPageComponent implements OnInit {
     private router: Router,
     ) {
     this.createForm();
+    this.processing = false;
   }
 
   createForm() {
@@ -50,13 +52,16 @@ export class PostPageComponent implements OnInit {
   }
 
   onSubmit() {
+    this.processing = true;
     let article = this.preparePost();
     this.api.postArticle(JSON.stringify(article))
       .then(value => {
         console.log(value);
+        this.processing = false;
         this.router.navigate(['mainpage']);
       })
       .catch(err => {
+        this.processing = false;
         console.log(err);
       });
   }
