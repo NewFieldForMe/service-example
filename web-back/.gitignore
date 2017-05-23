@@ -5,3 +5,5 @@ src/github.com
 src/app/db/gorm.db
 src/app/app
 pkg/
+src/app/gin-bin
+src/gopkg.in/
