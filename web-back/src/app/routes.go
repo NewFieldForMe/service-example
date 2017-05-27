@@ -37,4 +37,10 @@ var routes = Routes{
 		_apiPath + "/articles",
 		controller.ArticleCreate,
 	},
+	Route{
+		"SignUp",
+		"POST",
+		_apiPath + "/users",
+		controller.SignUp,
+	},
 }

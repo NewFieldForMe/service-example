@@ -7,3 +7,4 @@ src/app/app
 pkg/
 src/app/gin-bin
 src/gopkg.in/
+src/golang.org/
