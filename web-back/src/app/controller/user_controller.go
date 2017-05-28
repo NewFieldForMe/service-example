@@ -58,3 +58,27 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 	`)
 	w.Write(jsonBlob)
 }
+
+// SignUp :Post /user/login
+func Login(w http.ResponseWriter, r *http.Request) {
+	var _buf, _user model.User
+	db, err := apiInit(&_buf, r)
+	defer db.Close()
+	if err != nil {
+		panic("failed to connect database")
+	}
+	password := []byte(_buf.Password)
+	db.First(&_user, "user_name = ?", _buf.UserName)
+
+	if _user.ID == 0 {
+		returnMessage(w, http.StatusBadRequest, "login fault")
+		return
+	}
+	var hash = []byte(_user.Password)
+	err = bcrypt.CompareHashAndPassword(hash, password)
+	if err != nil {
+		returnMessage(w, http.StatusBadRequest, "login fault")
+		return
+	}
+	returnMessage(w, http.StatusOK, "login success")
+}

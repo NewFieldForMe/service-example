@@ -40,7 +40,13 @@ var routes = Routes{
 	Route{
 		"SignUp",
 		"POST",
-		_apiPath + "/users",
+		_apiPath + "/signup",
 		controller.SignUp,
+	},
+	Route{
+		"Login",
+		"POST",
+		_apiPath + "/login",
+		controller.Login,
 	},
 }
