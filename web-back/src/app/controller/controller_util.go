@@ -16,9 +16,12 @@ func apiInit(out interface{}, r *http.Request) (*gorm.DB, error) {
 	if err != nil {
 		panic("failed to connect database")
 	}
-	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
-	json.Unmarshal(body, &out)
-	return db, nil
+	if out != nil {
+		var body []byte
+		body, err = ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
+		json.Unmarshal(body, &out)
+	}
+	return db, err
 }
 
 func returnMessage(w http.ResponseWriter, status int, message string) {
