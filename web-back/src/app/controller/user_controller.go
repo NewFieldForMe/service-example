@@ -4,7 +4,10 @@ import (
 	"app/model"
 	"net/http"
 
+	jwt "github.com/dgrijalva/jwt-go"
 	"golang.org/x/crypto/bcrypt"
+
+	"app/helper"
 
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 )
@@ -56,5 +59,17 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		returnMessage(w, http.StatusBadRequest, "login fault")
 		return
 	}
+
+	token := jwt.NewWithClaims(jwt.GetSigningMethod("HS256"), &_user)
+	var _tokenstring string
+	_tokenstring, err = token.SignedString([]byte(helper.SECRET))
+	if err != nil {
+		returnMessage(w, http.StatusBadRequest, "login fault")
+		return
+	}
 	returnMessage(w, http.StatusOK, "login success")
+	var jsonBlob = []byte(`
+		{ "token": ` + _tokenstring + `" }
+	`)
+	w.Write(jsonBlob)
 }
