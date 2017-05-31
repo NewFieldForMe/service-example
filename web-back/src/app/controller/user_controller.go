@@ -18,13 +18,13 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 	db, err := apiInit(&_user, r)
 	defer db.Close()
 	if err != nil {
-		returnMessage(w, http.StatusServiceUnavailable, "DB Server down")
+		setMessageResponse(w, http.StatusServiceUnavailable, "DB Server down")
 		return
 	}
 	// confirm not exist user_name
 	db.First(&_buf, "user_name = ?", _user.UserName)
 	if _buf.ID != 0 {
-		returnMessage(w, http.StatusBadRequest, "exists post user name")
+		setMessageResponse(w, http.StatusBadRequest, "exists post user name")
 		return
 	}
 
@@ -34,29 +34,29 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 	_user.Password = string(hash)
 	db.Create(&_user)
 
-	returnMessage(w, http.StatusOK, "sign up success")
+	setMessageResponse(w, http.StatusOK, "sign up success")
 }
 
-// SignUp :Post /user/login
+// Login :Post /user/login
 func Login(w http.ResponseWriter, r *http.Request) {
 	var _buf, _user model.User
 	db, err := apiInit(&_buf, r)
 	defer db.Close()
 	if err != nil {
-		returnMessage(w, http.StatusServiceUnavailable, "DB Server down")
+		setMessageResponse(w, http.StatusServiceUnavailable, "DB Server down")
 		return
 	}
 	password := []byte(_buf.Password)
 	db.First(&_user, "user_name = ?", _buf.UserName)
 
 	if _user.ID == 0 {
-		returnMessage(w, http.StatusBadRequest, "login fault")
+		setMessageResponse(w, http.StatusBadRequest, "login fault")
 		return
 	}
 	var hash = []byte(_user.Password)
 	err = bcrypt.CompareHashAndPassword(hash, password)
 	if err != nil {
-		returnMessage(w, http.StatusBadRequest, "login fault")
+		setMessageResponse(w, http.StatusBadRequest, "login fault")
 		return
 	}
 
@@ -64,12 +64,11 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	var _tokenstring string
 	_tokenstring, err = token.SignedString([]byte(helper.SECRET))
 	if err != nil {
-		returnMessage(w, http.StatusBadRequest, "login fault")
+		setMessageResponse(w, http.StatusBadRequest, "login fault")
 		return
 	}
-	returnMessage(w, http.StatusOK, "login success")
-	var jsonBlob = []byte(`
-		{ "token": ` + _tokenstring + `" }
-	`)
-	w.Write(jsonBlob)
+	jsondata := tokenJSON{}
+	jsondata.Token = _tokenstring
+	w.WriteHeader(http.StatusOK)
+	setJSONResponse(w, jsondata)
 }
