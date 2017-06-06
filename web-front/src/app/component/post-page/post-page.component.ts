@@ -54,7 +54,7 @@ export class PostPageComponent implements OnInit {
   onSubmit() {
     this.processing = true;
     let article = this.preparePost();
-    this.api.postArticle(JSON.stringify(article))
+    this.api.postArticle(article)
       .then(value => {
         console.log(value);
         this.processing = false;

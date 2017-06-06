@@ -4,3 +4,7 @@ export class User {
     public name;
     public avator_filename;
 }
+export class PostAuth {
+    public email;
+    public password;
+}
