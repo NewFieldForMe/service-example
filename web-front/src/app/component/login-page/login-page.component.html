@@ -1,13 +1,13 @@
 <div class="container">
   <div class="bs-example">
-    <form>
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+        <input class="form-control" formControlName="username" type="email" class="form-control" id="inputEmail" placeholder="Email">
       </div>
       <div class="form-group">
         <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        <input class="form-control" formControlName="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
       </div>
       <div class="checkbox">
         <label><input type="checkbox"> Remember me</label>

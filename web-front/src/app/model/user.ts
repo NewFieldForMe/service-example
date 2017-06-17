@@ -5,6 +5,6 @@ export class User {
     public avator_filename;
 }
 export class PostAuth {
-    public email;
+    public username;
     public password;
 }
