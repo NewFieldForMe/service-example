@@ -1,4 +1,5 @@
 <div class="container">
+  <h2>Login</h2>
   <div class="bs-example">
     <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -14,6 +15,9 @@
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
+  </div>
+  <div>
+    Do not have an account yet? You can register from <a routerLink="/signup">this page.</a>
   </div>
 </div>
 

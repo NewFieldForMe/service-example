@@ -19,6 +19,7 @@ import { SessionService } from './service/session.service';
 
 import { appRoutes } from './route';
 import { ArticleTileComponent } from './component/main-page/article-tile/article-tile.component';
+import { SignupPageComponent } from './component/signup-page/signup-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ArticleTileComponent } from './component/main-page/article-tile/article
     PostPageComponent,
     UserPageComponent,
     ArticlePageComponent,
-    ArticleTileComponent
+    ArticleTileComponent,
+    SignupPageComponent
   ],
   imports: [
     BrowserModule,
